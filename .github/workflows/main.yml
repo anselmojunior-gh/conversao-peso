@@ -24,8 +24,8 @@ jobs:
         with:        
           #context: ./src
           #file: ./src/Dockerfile
-          context: ConversaoPeso.Web
-          file: ConversaoPeso.Web/Dockerfile
+          context: ./ConversaoPeso.Web
+          file: ./ConversaoPeso.Web/Dockerfile
           
           push: true
           tags: |
