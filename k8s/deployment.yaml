@@ -1,0 +1,36 @@
+# Deployment da Aplicação Web
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cp-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cp-app
+  template:
+    metadata:        
+      labels:
+        app: cp-app
+    spec:
+      containers:
+        - name: cp-app
+          image: anselmojr/conversao-peso:v1
+          ports:
+            - containerPort: 80
+
+---
+# Service da Applicação Web
+apiVersion: v1
+kind: Service
+metadata:
+  name: cp-app
+spec:
+  selector:
+    app: cp-app
+  ports:
+    - port: 80
+      protocol: TCP
+      name: http
+      nodePort: 30000
+  type: NodePort
